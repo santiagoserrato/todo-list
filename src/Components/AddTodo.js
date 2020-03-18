@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class AddTodo extends React.Component {
 
@@ -8,6 +7,7 @@ class AddTodo extends React.Component {
     }
 
     storeNewTodo = (event) => {
+
         this.setState({
             newTodo: {
                 id: this.props.nextId,
