@@ -1,6 +1,8 @@
 import React from 'react';
+import AddTodo from './AddTodo';
 import TodoItem from './TodoItem';
 import PropTypes from 'prop-types';
+
 
 class Todos extends React.Component {
 
@@ -9,12 +11,7 @@ class Todos extends React.Component {
             <div className="container">
                 <h1>Todo List</h1>
                 
-                <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Add todos here..." aria-label="Recipient's username" aria-describedby="button-addon2" />
-                    <div className="input-group-append">
-                        <button className="btn btn-outline-secondary" type="button" id="button-addon2">Add</button>
-                    </div>
-                </div>
+                <AddTodo addTodo={this.props.addTodo} nextId={this.props.todos.length+1} />
 
                 <ul className="list-group">
                     {this.props.todos.map((todo) => (<TodoItem key={todo.id} todo={todo} toggleCompleted={this.props.toggleCompleted} />))}

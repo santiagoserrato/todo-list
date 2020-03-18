@@ -25,8 +25,6 @@ class App extends React.Component {
   }
 
   toggleCompleted = (id) => {
-    console.log(id);
-
     this.setState({
       todos: this.state.todos.map(todo => {
         if(todo.id === id){
@@ -35,13 +33,23 @@ class App extends React.Component {
         return todo;
       })
     });
-    
+  }
+
+  addTodo = (newTodo) => {
+    if (newTodo == null){
+      return;
+    }
+
+    this.setState(state => {
+      const todos = state.todos.concat(newTodo);
+      return {todos,newTodo};
+    });
   }
 
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} />
+        <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} addTodo={this.addTodo} />
       </div>
     );
   }
