@@ -3,27 +3,35 @@ import React from 'react';
 class AddTodo extends React.Component {
 
     state = {
-        newTodo: null
+        title: ''
     }
 
-    storeNewTodo = (event) => {
-
+    handleChange = (event) => {
         this.setState({
-            newTodo: {
-                id: this.props.nextId,
-                title: event.target.value,
-                completed: false
-            }
+            title: event.target.value
         });
+    }
+
+    handleClick = () => {
+        this.props.addTodo(this.state.title);
+        this.setState({title: ''});
     }
 
     render() {
 
         return (
             <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Add todos here..." aria-label="Recipient's username" aria-describedby="button-addon2" onChange={this.storeNewTodo} />
+                <input 
+                    type="text" 
+                    className="form-control" 
+                    placeholder="Add todos here..." 
+                    aria-label="Recipient's username" 
+                    aria-describedby="button-addon2" 
+                    onChange={this.handleChange} 
+                    value={this.state.title} 
+                />
                 <div className="input-group-append">
-                    <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.props.addTodo.bind(this, this.state.newTodo)}>Add</button>
+                    <button className="btn btn-outline-secondary" type="button" id="button-addon2" onClick={this.handleClick}>Add</button>
                 </div>
             </div>
         );

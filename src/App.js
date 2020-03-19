@@ -35,21 +35,32 @@ class App extends React.Component {
     });
   }
 
-  addTodo = (newTodo) => {
-    if (newTodo == null){
+  addTodo = (newTitle) => {
+    if (newTitle === ''){
       return;
     }
 
-    this.setState(state => {
-      const todos = state.todos.concat(newTodo);
-      return {todos,newTodo};
+    const newTodo = {
+      id: this.state.todos.length + 1,
+      title: newTitle,
+      completed: false
+    };
+
+    this.setState({
+      todos: [...this.state.todos, newTodo]
+    });
+  }
+
+  deleteTodo = (id) => {
+    this.setState({
+      todos: [...this.state.todos.filter(todo => todo.id !== id)]
     });
   }
 
   render() {
     return (
       <div className="App">
-        <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} addTodo={this.addTodo} />
+        <Todos todos={this.state.todos} toggleCompleted={this.toggleCompleted} addTodo={this.addTodo} deleteTodo={this.deleteTodo} />
       </div>
     );
   }

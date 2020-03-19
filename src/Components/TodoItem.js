@@ -17,8 +17,8 @@ class TodoItem extends React.Component {
                     {this.props.todo.title}
                 </label>
                 </div>
-
-                <button className="btn btn-danger float-right">Delete</button>
+                
+                <button className="btn btn-danger float-right" onClick={this.props.deleteTodo.bind(this, this.props.todo.id)}>Delete</button>
             </div>
         );
     }
