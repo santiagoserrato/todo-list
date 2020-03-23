@@ -13,12 +13,21 @@ class AddTodo extends React.Component {
     }
 
     handleClick = () => {
+        this.handleSubmit();
+    }
+
+    handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+            this.handleSubmit();
+        }
+    }
+
+    handleSubmit = () => {
         this.props.addTodo(this.state.title);
         this.setState({title: ''});
     }
 
     render() {
-
         return (
             <div className="input-group mb-3">
                 <input 
@@ -28,6 +37,7 @@ class AddTodo extends React.Component {
                     aria-label="Recipient's username" 
                     aria-describedby="button-addon2" 
                     onChange={this.handleChange} 
+                    onKeyPress={this.handleKeyPress}
                     value={this.state.title} 
                 />
                 <div className="input-group-append">
