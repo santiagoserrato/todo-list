@@ -33,7 +33,7 @@ class AddTodo extends React.Component {
                 <input 
                     type="text" 
                     className="form-control" 
-                    placeholder="Add todos here..." 
+                    placeholder="Add new item here..." 
                     aria-label="Recipient's username" 
                     aria-describedby="button-addon2" 
                     onChange={this.handleChange} 
